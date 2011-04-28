@@ -4,12 +4,22 @@ module Landfill
 
   class << self
 
+    # Sample output:
+    #                        delta         pre        post  
+    # num_allocations:         487         417          70
+    # allocated_size:        14977       12256        2721
+    # collections:               0           0           0
+    # time:                      0           0           0
+    # growth:              1320553       12256     1308297
+    # live_objects:         124601        1606      122995
+    #
     def measure
       enable_gc_stats
-      snapshot_one = take_snapshot
+      snapshot_pre = take_snapshot
       yield
-      snapshot_two = take_snapshot
-      snapshot_two - snapshot_one
+      snapshot_post = take_snapshot
+      snapshot_delta = snapshot_post - snapshot_pre
+      GCReview.new(snapshot_delta, snapshot_pre, snapshot_post)
     end
 
     def enable_gc_stats

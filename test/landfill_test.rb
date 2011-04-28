@@ -1,4 +1,6 @@
 require 'test_helper'
+require 'landfill/g_c_snapshot'
+require 'landfill/g_c_review'
 
 class LandfillTest < Test::Unit::TestCase
 
@@ -6,7 +8,7 @@ class LandfillTest < Test::Unit::TestCase
     gc_info = Landfill.measure do
       # do nothing
     end
-    assert (gc_info.num_allocations < 20)
+    assert (gc_info.delta.num_allocations < 20)
 
 
     gc_info = Landfill.measure do
@@ -14,7 +16,10 @@ class LandfillTest < Test::Unit::TestCase
         "Look ma, I made" + " a new string"
       end
     end
-    assert (gc_info.num_allocations > 400)
+    assert (gc_info.delta.num_allocations > 400)
+    
+    # puts
+    # puts gc_info
   end
   
   
