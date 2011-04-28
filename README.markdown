@@ -6,6 +6,8 @@ Garbage Collection measurement tool.   You have some code, now measure how much 
 
 GC is **the** major issue when it comes to ruby performance troubles.  Landfill can help hunt down the big offenders. (REE 1.8.7+)
 
+[https://github.com/dissemble/Landfill](https://github.com/dissemble/Landfill)
+
 ## Using
 
 Similar usage pattern as Benchmark.ms.   
@@ -25,6 +27,8 @@ Similar usage pattern as Benchmark.ms.
 	growth:               137870     4756344     4894214
 	live_objects:           3404      866249      869653
 
+## Install:
 
-
-[https://github.com/dissemble/Landfill](https://github.com/dissemble/Landfill)
+	git clone git://github.com/dissemble/Landfill.git
+	cd Landfill
+	rake install
