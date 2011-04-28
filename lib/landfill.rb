@@ -1,4 +1,5 @@
 require 'landfill/g_c_snapshot'
+require 'landfill/g_c_review'
 
 module Landfill
 

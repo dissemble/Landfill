@@ -17,13 +17,23 @@ module Landfill
 
 
     def -(other)
+      computed_collections = self.collections - other.collections
+      if computed_collections > 0
+        computed_growth = "-"
+        computed_live_objects = "-"
+      else
+        computed_growth = self.growth - other.growth
+        computed_live_objects = self.live_objects - other.live_objects
+      end
+      
+      
       GCSnapshot.new(
       :num_allocations => self.num_allocations - other.num_allocations,
       :allocated_size => self.allocated_size - other.allocated_size,
-      :collections => self.collections - other.collections,
+      :collections => computed_collections,
       :time => self.time - other.time,
-      :growth => self.growth - other.growth,
-      :live_objects => self.live_objects - other.live_objects
+      :growth => computed_growth,
+      :live_objects => computed_live_objects
       )
     end
 

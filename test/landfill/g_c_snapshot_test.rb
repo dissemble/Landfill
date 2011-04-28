@@ -65,7 +65,7 @@ module Landfill
       gc_info1 = GCSnapshot.new(
         :num_allocations => 10,
         :allocated_size => 9,
-        :collections => 8,
+        :collections => 1,
         :time => 7,
         :growth => 6,
         :live_objects => 5
@@ -74,7 +74,7 @@ module Landfill
       gc_info2 = GCSnapshot.new(
         :num_allocations => 100,
         :allocated_size => 100,
-        :collections => 100,
+        :collections => 1,
         :time => 100,
         :growth => 100,
         :live_objects => 100
@@ -83,10 +83,39 @@ module Landfill
       gc_info3 = gc_info2 - gc_info1
       assert_equal 90, gc_info3.num_allocations
       assert_equal 91, gc_info3.allocated_size
-      assert_equal 92, gc_info3.collections
+      assert_equal 0, gc_info3.collections
       assert_equal 93, gc_info3.time
       assert_equal 94, gc_info3.growth
       assert_equal 95, gc_info3.live_objects
+    end
+    
+    
+    def test_subtracting_gcsnapshot_when_gc_has_fired
+      gc_info1 = GCSnapshot.new(
+        :num_allocations => 10,
+        :allocated_size => 9,
+        :collections => 0,
+        :time => 7,
+        :growth => 6,
+        :live_objects => 5
+      )
+      
+      gc_info2 = GCSnapshot.new(
+        :num_allocations => 100,
+        :allocated_size => 100,
+        :collections => 1,
+        :time => 100,
+        :growth => 100,
+        :live_objects => 100
+      )
+      
+      gc_info3 = gc_info2 - gc_info1
+      assert_equal 90, gc_info3.num_allocations
+      assert_equal 91, gc_info3.allocated_size
+      assert_equal 1, gc_info3.collections
+      assert_equal 93, gc_info3.time
+      assert_equal "-", gc_info3.growth
+      assert_equal "-", gc_info3.live_objects
     end
       
 

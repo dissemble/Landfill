@@ -1,6 +1,4 @@
 require 'test_helper'
-require 'landfill/g_c_snapshot'
-require 'landfill/g_c_review'
 
 class LandfillTest < Test::Unit::TestCase
 
