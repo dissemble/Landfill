@@ -4,7 +4,7 @@ Garbage Collection measurement tool.   You have some code, now measure how much 
 
 ## Description
 
-GC is **the** major issue when it comes to ruby performance troubles.  Landfill can help hunt down the big offenders.
+GC is **the** major issue when it comes to ruby performance troubles.  Landfill can help hunt down the big offenders. (REE 1.8.7+)
 
 ## Using
 
