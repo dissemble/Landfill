@@ -7,10 +7,10 @@ Gem::Specification.new do |s|
   s.version     = Landfill::VERSION
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Seth Plough"]
-  s.email       = ["TODO: Write your email address"]
+  s.email     = ["na@example.com"]
   s.homepage    = ""
-  s.summary     = %q{TODO: Write a gem summary}
-  s.description = %q{TODO: Write a gem description}
+  s.summary     = %q{GC Debugging}
+  s.description = %q{Pass a block to Landfill.measure, much like Benchmark.ms, but for GC info}
 
   s.rubyforge_project = "landfill"
 
